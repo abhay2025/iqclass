@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        IQ Classes
+    </title>
+
+    <link rel="shortcut icon" href="568.png" type="image/x-icon">
+
+    <!-- AOS(Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- FLIPSTER CDN -->
+    <link rel="stylesheet" href="/common/jquery.flipster.min.css">
+
+    <!-- FLICKITY CDN -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+    <!-- 
+    BOOTSTRAP CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/c123228cd1.js" crossorigin="anonymous"></script>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&family=Monoton&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400&family=Merriweather+Sans&family=Ubuntu:wght@300&display=swap">
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="/common/new.css">
+
+    <style>
+        /** For mobile devices **/
+        @media only screen and (max-width:760px) {
+            .anclog {
+                max-width: 75% !important;
+                margin-bottom: 0.5em;
+            }
+
+            .logim {
+                max-width: 55% !important;
+            }
+
+            .newcorr {
+                margin-left: -14em !important;
+            }
+
+        }
+
+        .anclog {
+            max-width: 12.9%;
+        }
+
+        .logim {
+            max-width: 100%;
+        }
+
+        .correct {
+            margin-left: 14em !important;
+        }
+
+        @media only screen and (max-width:760px) {
+            /* .custom-shape-divider-top-1630622741 svg {
+                width: calc(102% + 1.3px);
+                height: 218px;
+            } */
+
+            .next,
+            .prev {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            .item {
+                display: block !important;
+            }
+
+            iframe {
+                width: 100%;
+                height: 326px;
+            }
+
+            #part6 .carousel-cell {
+                margin-right: 7em !important;
+                width: 44%;
+                height: 340px;
+            }
+
+
+
+            .time-img {
+                width: 10rem;
+                height: 10rem;
+            }
+
+
+
+
+
+            /* .custom-shape-divider-top-1630622741 svg {
+                width: calc(258% + 20.3px) !important;
+                height: 484px !important;
+            } */
+
+
+
+
+
+            .carousel-control-prev {
+                display: none;
+            }
+
+            .pre:hover {
+                transform: translateX(15px);
+            }
+
+            .nex:hover {
+                transform: translateX(-15px);
+            }
+
+            .carousel-control-next {
+                display: none;
+            }
+
+            .carousel-indicators {
+                z-index: 1;
+            }
+
+        }
+
+        .ss {
+            width: 48em;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            font-size: 1.1em;
+        }
+
+        /* shapes */
+        #part3 {
+            margin-top: 0.3em;
+            text-align: center;
+            position: relative;
+        }
+
+
+        .part2_headdiv h1 {
+            font-size: 2em !important;
+            padding: 0.4em;
+        }
+
+        .part2_headdiv {
+            width: 41%;
+            margin: auto;
+            height: 5em;
+            display: flex;
+            align-items: center;
+            color: #000;
+        }
+
+        .part2_headdiv h1 {
+            box-shadow: 10px 10px 10px 10px rgb(255, 0, 55);
+            font-family: "Monoton", cursive;
+            padding: 0.5em;
+        }
+
+
+        .special h3 {
+            /* color: rgb(248, 9, 9); */
+            /* font-family: "Kurale", serif; */
+            font-weight: 600;
+        }
+
+        .custom-shape-divider-top-1630622741 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(0deg);
+            z-index: -1;
+        }
+
+        .custom-shape-divider-top-1630622741 svg {
+            position: relative;
+            display: block;
+            /* width: calc(123% + 1.3px); */
+            width: 200%;
+            height: 550px;
+            animation: shape 14s ease-in-out infinite;
+        }
+
+        .special:hover .content {
+            bottom: 0;
+        }
+
+        .content {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            bottom: calc(100% + 0px);
+            background-image: linear-gradient(to top left, #b10c72, #f50411);
+            transition: 1.2s;
+            z-index: 1;
+            color: white;
+            display: grid;
+            place-content: center;
+            padding: 12px;
+            text-align: start;
+        }
+
+        .content li {
+            font-size: 18px;
+            font-family: "Kurale", serif;
+            font-weight: bold;
+        }
+
+        .content img {
+            width: 7.5em;
+            height: 7.5em;
+            margin: 1em 0;
+        }
+
+        .content img {
+            margin: 10px 0 10px;
+        }
+
+        /* .content {
+    padding: 0;
+    } */
+        /* .content li {
+    font-size: 14px;
+    } */
+
+        @keyframes shape {
+            0% {
+                left: 0;
+            }
+
+            50% {
+                left: -60%;
+            }
+
+            100% {
+                left: 0;
+            }
+        }
+
+        .custom-shape-divider-top-1630622741 .shape-fill {
+            fill: #e31837;
+        }
+
+        .geo-shapes img {
+            width: 100px;
+            animation: geo 10s linear infinite;
+            position: relative;
+            z-index: -6;
+            top: -12em;
+        }
+
+        .geo-shapes {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        @keyframes geo {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(140vh);
+                opacity: 1;
+            }
+        }
+
+        .geo-shapes img:nth-child(1) {
+            animation-delay: 1s;
+        }
+
+        .geo-shapes img:nth-child(2) {
+            animation-delay: 5s;
+        }
+
+        .geo-shapes img:nth-child(3) {
+            animation-delay: 6s;
+        }
+
+        .geo-shapes img:nth-child(4) {
+            animation-delay: 10s;
+        }
+
+        .geo-shapes img:nth-child(5) {
+            animation-delay: 12s;
+        }
+
+        .geo-shapes img:nth-child(6) {
+            animation-delay: 14s;
+        }
+
+        .special {
+            /* width: 30%; */
+            height: 19em;
+            box-shadow: -1px -1px 10px 0px #000;
+            transition: all 2s linear;
+            background-color: white;
+            margin: 3em;
+            cursor: pointer;
+            border: 3px solid #e31837;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media screen and (max-width: 768px) {
+            .big {
+                display: none !important;
+            }
+
+            .small {
+                display: block !important;
+            }
+
+            .part2_headdiv {
+                width: 80% !important;
+                height: 7em !important;
+                /* margin-top: -38px !important; */
+            }
+
+            #part3 .row {
+                margin-left: 13px;
+            }
+
+
+            .user {
+                width: 539px;
+                border-radius: 0 !important;
+                margin-top: 0px;
+            }
+
+            .user p {
+                margin: 60px 20px 30px !important;
+            }
+
+            /* .space {
+    margin: 0 246px !important;
+    } */
+            .space2 {
+                margin: 0 327px !important;
+            }
+
+            .space {
+                margin: 0 19px !important;
+            }
+
+            #base h1 {
+                bottom: 8px;
+            }
+
+            .view-box {
+                top: 43%;
+            }
+
+            .fea-div2 {
+                display: none !important;
+            }
+
+            .fea-div11 {
+                padding-bottom: 2em;
+                z-index: 999;
+                align-items: center;
+                width: 18em !important;
+            }
+
+            .fea-para {
+                margin-top: 0;
+                margin-bottom: 1rem;
+                color: #e31837;
+                font-weight: 500;
+                padding-left: 31px;
+                width: 100% !important;
+                font-size: 1em !important;
+            }
+
+            .fea-divh {
+                font-size: 1.2em !important;
+            }
+
+            .fea-div1 {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                align-content: center;
+                margin-left: -60px;
+            }
+
+            .special {
+                width: 93% !important;
+                margin-top: 4em !important;
+                margin: 0;
+            }
+
+            .geo-shapes {
+                width: 40% !important;
+            }
+
+            .car {
+                margin-right: 0;
+                display: flex;
+                justify-content: center !important;
+            }
+        }
+
+        #about-sec {
+            background-image: url('img/pexels-pixabay-301920.jpg');
+            background-size: cover;
+            height: 12em;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            background-color: rgb(255 3 3 / 61%);
+            background-blend-mode: multiply;
+            align-items: center;
+        }
+
+        .text-cut-out {
+            padding: 12px;
+            background-color: white;
+            mix-blend-mode: screen;
+            width: 6em;
+            font-size: 4em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* part3 */
+        #features {
+            padding: 4em 1em;
+            position: relative;
+            z-index: 1;
+            background-color: white;
+        }
+
+        #features .fea-div {
+            position: relative;
+            z-index: 999 !important;
+        }
+
+        .fea-div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-top: 3em;
+        }
+
+        .fea-div1 {
+            width: 100%;
+            position: relative;
+            left: 62px;
+        }
+
+        .fea-div11 {
+            padding-bottom: 2em;
+            z-index: 999;
+        }
+
+        .fea-img {
+            width: 33em;
+            height: 27em;
+            border-radius: 30px;
+        }
+
+        .fea-divh {
+            font-size: 1.5em;
+            color: black;
+        }
+
+        .fea-div .fas {
+            float: left;
+            margin-left: -52px;
+            padding: 3px 13px;
+            font-size: 35px;
+            color: #e31837;
+            border: 2px solid;
+        }
+
+        .fea-para {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #e31837;
+            font-weight: 700;
+            padding-left: 31px;
+            width: 34em;
+        }
+
+        .time-img {
+            width: 10rem;
+            height: 10rem;
+        }
+
+        #part3 .content h2 {
+            font-size: 2.1rem;
+        }
+
+        .custom-shape-divider-top-1630622741 svg {
+            width: calc(258% + 20.3px) !important;
+            height: 484px !important;
+        }
+
+        .geo-shapes img {
+            animation: geo 12s linear infinite;
+        }
+
+        @keyframes geo {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(300vh);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- TOP LABEL -->
+    <div class="top-bar">
+        <div class="row ">
+            <div class="col-lg-8 col-5">
+
+                <div class="social ms-3 me-3">
+                    <span style="color: white;font-size: 1.1em;font-weight: 600;">Follow Us:</span>
+                    <ul>
+                        <li>
+
+                            <a href="https://www.facebook.com/people/IQ-Classes/100057281447028/?__xts__[0]=68.ARDXv6U04V8VO0mYLanwwKDImK7gJWNGpY7GngoWW3cvhwlVpXnv86O6BZ6WQG46GxO02UnWShK3pn9N2wyp
+                      29TDgX3psXLMkJQCG5jWxFHgHRpIOfigdZSEOAvMZtxKZX8iDntlwfLyU6Y4leadYswG_LLUpJ9_BEC0lPmVQ
+                      8pBnAFIzhaSbmsXdMHZ-2b_FFqRipl7EgcQ_h1FrR-2WUnKCDxV492yAMkoQXZhNXFduMS0gvOM6-2LMENmn48EHT
+                      5nIBwzY3bMCHke2QF0phXNwQEnwhM81vfVwn6dlZxZMtUdzVRVzBYTRbQsfDLQPClwM-8EHbkPpKVkKlCtf2dx5dRf"
+                                class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/iqclasses/?hl=en" class="instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCGCB1M7_8or7SO8jBSA9n6w/featured"
+                                class="youtube"><i class="fab fa-youtube"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-7">
+                <ul class="social-list d-sm-flex justify-content-evenly">
+                    <li>
+                        <a class=""
+                            href="https://www.google.com/maps/dir/26.8500992,81.002496/iq+classes/@26.8513615,80.9651166,14z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x399bfd30a72dfa5b:0x35c4b4954027142b!2m2!1d80.9631824!2d26.8582189"><i
+                                class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;Parag Narain Road, Lucknow</a>
+                    </li>
+                    <div class="vertical-line"></div>
+                    <li>
+                        <a href="tel:7905529739"><i class="fas fa-solid fa-phone me-1"
+                                style="transform: rotate(100deg);"></i>
+                            7905529739,</a>
+                        <a href="tel:9839520987" class="d-inline-block ph2">9839520987</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+        <div class="container ">
+            <a class="navbar-brand anclog" href="/"><img class="logim" src="img/NEWLOGO1.png"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse newcorr" id="navbarNavDropdown">
+                <div class="ss correct">
+                    <ul class="navbar-nav float-right">
+                        <li class="nav-item">
+                            <a class="nav-link hom" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about.html">About Us</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link spec" href="/resources.html">Resources</a>
+                        </li>
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle studymat" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                    class="fas fa-caret-down"></i>
+                                Study Material
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="/class9">Class 9th ICSE</a></li>
+                                <li><a class="dropdown-item" href="/class10">Class 10th ICSE</a></li>
+                                <li><a class="dropdown-item" href="/class11">Class 11th ISC</a></li>
+                                <li><a class="dropdown-item" href="/class12">Class 12th ISC</a></li>
+
+                                <li><a class="dropdown-item" href="/commingsoon">Class 9th CBSE</a></li>
+                                <li><a class="dropdown-item" href="/commingsoon">Class 10th CBSE</a></li>
+                                <li><a class="dropdown-item" href="/commingsoon">Class 11th CBSE</a></li>
+                                <li><a class="dropdown-item" href="/commingsoon">Class 12th CBSE</a></li>
+                            </ul>
+
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link con" href="#part7">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- SCROLL To Top -->
+    <div class="sidebar-social">
+        <button id="btnScrollToTop" onclick="topFunction() " style="display: none;">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <a id="whatsapp-chat" href="https://api.whatsapp.com/send/?phone=919555484802&app_absent=0&lang=eng"
+            data-bs-target="_blank">
+            <i class="fa fa-brands fa-whatsapp" aria-hidden="true"></i>
+        </a>
+    </div>
+    <!-- 
+    <section id="about-sec">
+        <h3 class="text-cut-out">
+            About Us
+        </h3>
+    </section> -->
+    <div class="mt-5">
+        <img src="img/1.png" alt="" class="img-fluid big">
+        <img src="img/1(sm).png" alt="" class="img-fluid d-none small">
+
+    </div>
+
+    <section id="features">
+        <div>
+            <h2 style="text-align: center;font-size: 3em;">FEATURE</h2>
+            <h4 style="font-size: 1.4em;text-align: center;padding: 0.5em;">OUR SPECIALITY</h4>
+            <div class="fea-div">
+                <div class="fea-div1">
+                    <div class="fea-div11">
+                        <h2 class="fea-divh">EXPERIENCED TEACHERS</h2>
+                        <i class="fas fa-book-reader"></i>
+                        <p class="fea-para">We provide teachers specialized in various fields.They train students so
+                            that they may groom as responsible citizen in society</p>
+                    </div>
+                    <div class="fea-div11">
+                        <h2 class="fea-divh">EFFECTIVE LEARNING</h2>
+                        <i class="fas fa-apple-alt"></i>
+                        <p class="fea-para">We provide teachers specialized in various fields.They train students so
+                            that they may groom as responsible citizen in society</p>
+                    </div>
+                    <div class="fea-div11">
+                        <h2 class="fea-divh">ASSIGNMENTS AND REVISION</h2>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <p class="fea-para">We provide teachers specialized in various fields.They train students so
+                            that they may groom as responsible citizen in society</p>
+                    </div>
+                </div>
+                <div class="fea-div2">
+                    <img src="img/depositphotos_10732962-Happy-teacher.jpg" alt="" class="fea-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIALITY -->
+    <section id="part3">
+        <div class="custom-shape-divider-top-1630622741">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="geo-shapes">
+            <img src="img/triangle-xxl.png" alt="">
+            <img src="img/imgbin_red-circle-font-png.png" alt="">
+            <img src="img/triangle-xxl.png" alt="">
+            <img src="img/imgbin_red-circle-font-png.png" alt="">
+            <img src="img/triangle-xxl.png" alt="">
+            <img src="img/imgbin_red-circle-font-png.png" alt="">
+        </div>
+
+        <div class="part2_headdiv">
+            <h1 class="text-align-center" style="font-weight: 900;color: black;position: relative;">Reason to Choose Us
+            </h1>
+        </div>
+
+        <div class="row car" style="justify-content:space-between;">
+
+            <div class="col-lg-3 special"
+                style="background-image: url('img/fac.png');background-size:contain;background-repeat: no-repeat;">
+                <h3 style="margin-top: 227px;">Highly Qualified & Experienced Faculty</h3>
+                <div class="content">
+                    <img src="img/55.png" style="margin:auto;" alt="">
+                    <ul>
+                        <li>Highly skilled and experrienced teachers work with us</li>
+                        <li>They are specialised in their respective fields</li>
+                        <li>They very well know how to shape your child's future</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 special"
+                style="background-image: url('img/online.png');background-size:contain;background-repeat: no-repeat;">
+                <h3 style="margin-top: 227px;">Online Test Portal for Students</h3>
+                <div class="content">
+                    <img src="img/56.png" style="margin:auto;" alt="">
+                    <ul>
+                        <li>Frequent Test are taken on panel</li>
+                        <li>Assignments are given on panel</li>
+                        <li>Different levels of tests are given</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 special"
+                style="background-image: url('img/on-learn.png');background-repeat: no-repeat; background-size:contain;">
+                <h3 style="margin-top: 227px;"> Online / Offline Classes</h3>
+                <div class="content">
+                    <img src="img/59.png" style="margin:auto;" alt="">
+                    <ul>
+                        <li>Best Interface for students to understand easily</li>
+                        <li>Small Online batches</li>
+                        <li>Personel attention to students</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 special"
+                style="background-image: url('img/personality (2).png');background-size:contain;background-repeat: no-repeat;">
+                <h3 style="margin-top: 227px;">Free Career Counselling Sessions</h3>
+                <div class="content">
+                    <img src="img/60.png" style="margin:auto;" alt="">
+                    <ul>
+                        <li>Trained Career Counsellers helps to guide student's career path</li>
+                        <li>Personality Development Sessions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 special"
+                style="background-image: url('img/comp.png');background-size:contain;background-repeat: no-repeat;">
+                <h3 style="margin-top: 227px;">Well Established Computer Labs</h3>
+                <div class="content">
+                    <img src="img/58.png" style="margin:auto;" alt="">
+                    <ul>
+                        <li>Computer classes on JAVA/PYTHON were conducted</li>
+                        <li>Practical Classes are also conducted </li>
+                        <li>Development and Designing Classes are conducted</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 special"
+                style="background-image: url('img/meeting.png');background-size:contain;background-repeat: no-repeat;">
+                <h3 style="margin-top: 227px;">Parent-Teacher Meeting</h3>
+                <div class="content">
+                    <img src="img/57.png" style="margin:auto;" alt="">
+                    <ul>
+                        <li>Regular Reports are given to parents</li>
+                        <li>Monthly Meetings are conducted </li>
+                        <li>Monthly score cards are generated</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <section id="part7">
+        <div class="row" style="justify-content: space-around;">
+            <div class="col-lg-5 services">
+                <h2>Reach Us</h2>
+                <iframe class="frame"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.425360007304!2d80.96099371421445!3d26.858223668901264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd30a72dfa5b%3A0x35c4b4954027142b!2sIQ%20CLASSES!5e0!3m2!1sen!2sin!4v1643434358193!5m2!1sen!2sin"
+                    width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <div class="col-lg-4 services">
+                <h2>SERVICES</h2>
+                <ul>
+                    <li>ACADEMIC</li>
+                    <li>ON-LINE PREPARATION</li>
+                    <li>FOUNDATION & CRASH COURSES</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 visit">
+                <h2>CONTACT</h2>
+                <div class="sub-visit">
+                    <address>
+                        B-54, Krishna Bhawan, Parag Narain Road,
+                        Near Butler Palace Colony Lucknow
+                    </address>
+                </div>
+                <div class="sub-visit">
+                    <address>
+                        Contact:+ 91790552 9739
+                    </address>
+                </div>
+                <div class="sub-visit">
+                    <address>Email:info@iqclasses.in</address>
+                </div>
+
+
+            </div>
+
+            <div class="social-footer" style="margin-top: 7em;">
+                <a href="https://www.facebook.com/people/IQ-Classes/100057281447028/?__xts__[0]=68.ARDXv6U04V8VO0mYLanwwKDImK7gJWNGpY7GngoWW3cvhwlVpXnv86O6BZ6WQG46GxO02UnWShK3pn9N2wyp
+                      29TDgX3psXLMkJQCG5jWxFHgHRpIOfigdZSEOAvMZtxKZX8iDntlwfLyU6Y4leadYswG_LLUpJ9_BEC0lPmVQ
+                      8pBnAFIzhaSbmsXdMHZ-2b_FFqRipl7EgcQ_h1FrR-2WUnKCDxV492yAMkoQXZhNXFduMS0gvOM6-2LMENmn48EHT
+                      5nIBwzY3bMCHke2QF0phXNwQEnwhM81vfVwn6dlZxZMtUdzVRVzBYTRbQsfDLQPClwM-8EHbkPpKVkKlCtf2dx5dRf"
+                    class="share-footer-icon-fb">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="" class="share-footer-icon-tweet">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UCGCB1M7_8or7SO8jBSA9n6w/featured"
+                    class="share-footer-icon-youtube"><i class="fab fa-youtube"></i></a>
+            </div>
+    </section>
+
+    <!-- JQUERY CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+    <!-- BOOTSTRAP JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+
+    <!-- SIDEBAR BUTTON JS -->
+    <script>
+        let btnScrollToTop = document.querySelector('#btnScrollToTop')
+
+        window.onscroll = function () { scrollfunction() }
+
+
+        function scrollfunction() {
+            if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+                btnScrollToTop.style.display = "block";
+            } else {
+                btnScrollToTop.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+
+        function topFunction() {
+            $("html,body").animate({ scrollTop: 0 }, "fast")
+            // document.body.scrollTop = 0; // For Safari
+            // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+
+
+    </script>
+</body>
+
+</html>
